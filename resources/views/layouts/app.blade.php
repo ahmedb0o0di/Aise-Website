@@ -171,7 +171,8 @@
             <div class="ft-blinks">
                <a href="{{ route('about') }}">About</a>
                <a href="{{ route('services') }}">Services</a>
-               <a href="/admin" target="_blank" style="color:var(--primary);font-weight:600;"><i class="fas fa-lock me-1"></i>Admin Dashboard</a>
+               <a href="{{ route('portfolio') }}">Work</a>
+               <a href="{{ route('contact') }}">Contact</a>
             </div>
          </div>
       </div>
