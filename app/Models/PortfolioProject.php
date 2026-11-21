@@ -27,6 +27,10 @@ class PortfolioProject extends Model
             return 'branding web';
         }
 
+        if ($this->slug === 'tijan-modest-fashion-platform') {
+            return 'social web';
+        }
+
         if (in_array($this->slug, ['shakshak-tours-platform', 'ern-egypt-platform', 'tourlives-travel-platform', 'you2eu-platform', 'robota-industries-platform', 'n62-creative-studio-platform'])) {
             return 'web';
         }
@@ -38,6 +42,10 @@ class PortfolioProject extends Model
     {
         if (in_array($this->slug, ['sc-dmc-global-travel-platform', 'top-marine-red-sea-platform', 'catch-your-trip-platform', 'kiko-sharm-platform', 'almasa-construction-platform', 'power-factor-solutions-platform'])) {
             return 'Branding & Web Design';
+        }
+
+        if ($this->slug === 'tijan-modest-fashion-platform') {
+            return 'Social Media & Web Design';
         }
 
         if (in_array($this->slug, ['shakshak-tours-platform', 'ern-egypt-platform', 'tourlives-travel-platform', 'you2eu-platform', 'robota-industries-platform', 'n62-creative-studio-platform'])) {
