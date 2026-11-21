@@ -1,0 +1,52 @@
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES
+   - Breakpoints for Mobile, Tablet & Desktop viewports
+   ========================================================================== */
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 991px) {
+  .about-cnt {
+    padding-left: 0;
+    margin-top: 44px;
+  }
+  .about-exp,
+  .about-clients {
+    right: 0;
+  }
+  .hero-img-wrap,
+  .hero-float {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .tb-l {
+    display: none;
+  }
+  .hero-stats {
+    gap: 0;
+  }
+  .hstat {
+    padding: 0 16px;
+  }
+  .cf-wrap {
+    padding: 24px;
+  }
+}
+@media (max-width: 575px) {
+  .hero-btns {
+    flex-direction: column;
+  }
+  .btn-hp,
+  .btn-hs {
+    width: 100%;
+    justify-content: center;
+  }
+  .filter-tabs {
+    gap: 6px;
+  }
+  .ftab {
+    padding: 6px 14px;
+    font-size: 0.82rem;
+  }
+}
