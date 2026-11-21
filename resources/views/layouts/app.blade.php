@@ -246,8 +246,13 @@
                   <h6 style="font-weight:700;margin-bottom:8px">Results & Impact</h6>
                   <p style="color:var(--text2);margin-bottom:24px;line-height:1.78">{{ $p->results }}</p>
                @endif
-               <div class="mt-4 pt-3 border-top d-flex justify-content-between align-items-center">
-                  <a href="{{ route('contact') }}" class="btn-p">Start Similar Project <i class="fas fa-arrow-right ms-1"></i></a>
+               <div class="mt-4 pt-3 border-top d-flex flex-wrap justify-content-between align-items-center gap-3">
+                  <div class="d-flex align-items-center gap-2">
+                     <a href="{{ route('contact') }}" class="btn-p">Start Similar Project <i class="fas fa-arrow-right ms-1"></i></a>
+                     @if(!empty($p->live_url))
+                        <a href="{{ $p->live_url }}" target="_blank" rel="noopener noreferrer" class="btn-o" style="padding: 10px 22px; border-radius: 50px; font-weight: 600; font-size: 0.92rem;"><i class="fas fa-external-link-alt me-1"></i> Visit Live Website</a>
+                     @endif
+                  </div>
                   <button type="button" class="btn-modal-close" data-bs-dismiss="modal"><i class="fas fa-times me-1"></i> Close</button>
                </div>
             </div>
