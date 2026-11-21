@@ -3,12 +3,28 @@
 @section('title', 'Contact Us')
 
 @section('content')
-   <!-- PAGE HEADER -->
-   <section class="py-5 bg-dark text-white text-center" style="padding-top:140px !important; background: var(--bg2);">
-      <div class="container">
-         <div class="sec-badge mx-auto mb-3">Get in Touch</div>
-         <h1 class="display-4 fw-bold">Let's Start a Conversation</h1>
-         <p class="lead text-muted mx-auto" style="max-width:650px;">Ready to grow? Tell us about your project and our senior directors will respond with a strategic consultation blueprint within 24 hours.</p>
+   <!-- CONTACT PAGE HERO BANNER -->
+   <section class="contact-hero-banner position-relative text-center d-flex align-items-center justify-content-center" 
+      style="min-height: 420px; padding: 160px 0 90px; background-image: url('{{ $settings->contact_hero_image_url }}'); background-size: cover; background-position: center center; position: relative; overflow: hidden;">
+      <!-- Elegant Dark Gradient Overlay guaranteeing high contrast in both themes -->
+      <div class="position-absolute top-0 start-0 w-100 h-100" 
+         style="background: linear-gradient(180deg, rgba(12, 12, 16, 0.72) 0%, rgba(12, 12, 16, 0.92) 100%); pointer-events: none;"></div>
+      <div class="container position-relative" style="z-index: 2;">
+         <div class="sec-badge mx-auto mb-3" data-aos="fade-down" style="background: rgba(255, 82, 37, 0.15); color: #ff5225; border: 1px solid rgba(255, 82, 37, 0.35);">
+            <i class="fas fa-paper-plane me-1"></i> Get in Touch
+         </div>
+         <h1 class="display-4 fw-bold text-white mb-3" data-aos="fade-up" style="letter-spacing: -0.5px;">
+            Let's Start a <span style="background: linear-gradient(135deg, #ff5225 0%, #ff8a65 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Conversation</span>
+         </h1>
+         <p class="lead mx-auto mb-4" data-aos="fade-up" data-aos-delay="100" style="max-width: 680px; color: rgba(255, 255, 255, 0.88); font-size: 1.15rem; line-height: 1.6;">
+            Ready to grow? Tell us about your project and our senior directors will respond with a strategic consultation blueprint within 24 hours.
+         </p>
+         <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
+            <ol class="breadcrumb justify-content-center mb-0" style="background: transparent; font-size: 0.9rem;">
+               <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: rgba(255, 255, 255, 0.75); text-decoration: none;"><i class="fas fa-home me-1"></i> Home</a></li>
+               <li class="breadcrumb-item active" aria-current="page" style="color: #ff5225 !important; font-weight: 600;">Contact Us</li>
+            </ol>
+         </nav>
       </div>
    </section>
 
@@ -127,31 +143,49 @@
       </div>
    </section>
    <!-- GOOGLE MAP EMBED SECTION -->
-   <section class="pb-5 pt-0">
+   <section class="py-5" style="background: var(--bg);">
       <div class="container">
+         <div class="row sec-hd mb-4 text-center">
+            <div class="col-12" data-aos="fade-up">
+               <div class="sec-badge mb-2"><i class="fas fa-map-marked-alt me-1"></i> Location & Navigation</div>
+               <h2 class="sec-title">Find Us on <span>Google Maps</span></h2>
+               <p class="sec-desc mx-auto" style="max-width: 620px;">
+                  {{ $settings->contact_address }}
+               </p>
+            </div>
+         </div>
          <div class="row">
             <div class="col-12" data-aos="fade-up">
-               <div style="border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,0.08); background:var(--bg2); box-shadow:0 15px 35px rgba(0,0,0,0.25);">
-                  <div class="d-flex justify-content-between align-items-center py-3 px-4 flex-wrap gap-2" style="border-bottom:1px solid rgba(255,255,255,0.08);">
-                     <div>
-                        <h5 class="mb-0 text-white"><i class="fas fa-map-marked-alt text-primary me-2"></i> Find Us on Google Maps</h5>
-                        <small class="text-muted">{{ $settings->contact_address }}</small>
+               <div style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); background: var(--bg2); box-shadow: 0 20px 45px rgba(0,0,0,0.22);">
+                  <div class="d-flex justify-content-between align-items-center py-3 px-4 flex-wrap gap-3" 
+                     style="border-bottom: 1px solid rgba(255, 255, 255, 0.08); background: var(--bg2);">
+                     <div class="d-flex align-items-center gap-3">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(255, 82, 37, 0.15); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.25rem;">
+                           <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                           <div style="font-weight: 700; font-size: 1.05rem; color: var(--text-heading, inherit);">Hurghada Headquarters</div>
+                           <div style="font-size: 0.88rem; color: var(--text-muted, #94a3b8);">{{ $settings->contact_address }}</div>
+                        </div>
                      </div>
                      @if(!empty($settings->google_map_link))
-                        <a href="{{ $settings->google_map_link }}" target="_blank" rel="noopener noreferrer" class="btn-p btn-sm" style="padding:7px 18px; font-size:13px;">
-                           <i class="fas fa-directions me-1"></i> Open Location in Google Maps
+                        <a href="{{ $settings->google_map_link }}" target="_blank" rel="noopener noreferrer" class="btn-p btn-sm d-inline-flex align-items-center gap-2" style="padding: 10px 22px; font-weight: 600; text-decoration: none;">
+                           <span>Open in Google Maps</span>
+                           <i class="fas fa-external-link-alt"></i>
                         </a>
                      @endif
                   </div>
-                  <iframe 
-                     src="{{ $settings->google_map_embed ?: 'https://maps.google.com/maps?q=27.3211575,33.6996941&hl=en&z=15&output=embed' }}" 
-                     width="100%" 
-                     height="450" 
-                     style="border:0; display:block;" 
-                     allowfullscreen="" 
-                     loading="lazy" 
-                     referrerpolicy="no-referrer-when-downgrade">
-                  </iframe>
+                  <div style="position: relative; width: 100%; height: 460px;">
+                     <iframe 
+                        src="{{ $settings->google_map_embed ?: 'https://maps.google.com/maps?q=27.3211575,33.6996941&hl=en&z=15&output=embed' }}" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; display:block;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                     </iframe>
+                  </div>
                </div>
             </div>
          </div>

@@ -543,22 +543,29 @@
          <!-- GOOGLE MAP EMBED IN HOMEPAGE CONTACT -->
          <div class="row mt-5">
             <div class="col-12 aos-init aos-animate" data-aos="fade-up">
-               <div style="border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,0.08); background:var(--bg2); box-shadow:0 15px 35px rgba(0,0,0,0.25);">
-                  <div class="d-flex justify-content-between align-items-center py-3 px-4 flex-wrap gap-2" style="border-bottom:1px solid rgba(255,255,255,0.08);">
-                     <div>
-                        <h5 class="mb-0 text-white"><i class="fas fa-map-marked-alt text-primary me-2"></i> Our Location in Hurghada</h5>
-                        <small class="text-muted">{{ $settings->contact_address }}</small>
+               <div style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: var(--bg2); box-shadow: 0 20px 45px rgba(0,0,0,0.22);">
+                  <div class="d-flex justify-content-between align-items-center py-3 px-4 flex-wrap gap-3" 
+                     style="border-bottom: 1px solid rgba(255, 255, 255, 0.08); background: var(--bg2);">
+                     <div class="d-flex align-items-center gap-3">
+                        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(255, 82, 37, 0.15); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.25rem;">
+                           <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                           <div style="font-weight: 700; font-size: 1.05rem; color: var(--text-heading, inherit);">Our Headquarters in Hurghada</div>
+                           <div style="font-size: 0.88rem; color: var(--text-muted, #94a3b8);">{{ $settings->contact_address }}</div>
+                        </div>
                      </div>
                      @if(!empty($settings->google_map_link))
-                        <a href="{{ $settings->google_map_link }}" target="_blank" rel="noopener noreferrer" class="btn-p btn-sm" style="padding:7px 18px; font-size:13px;">
-                           <i class="fas fa-directions me-1"></i> Open Location in Google Maps
+                        <a href="{{ $settings->google_map_link }}" target="_blank" rel="noopener noreferrer" class="btn-p btn-sm d-inline-flex align-items-center gap-2" style="padding: 10px 22px; font-weight: 600; text-decoration: none;">
+                           <span>Open in Google Maps</span>
+                           <i class="fas fa-external-link-alt"></i>
                         </a>
                      @endif
                   </div>
                   <iframe 
                      src="{{ $settings->google_map_embed ?: 'https://maps.google.com/maps?q=27.3211575,33.6996941&hl=en&z=15&output=embed' }}" 
                      width="100%" 
-                     height="400" 
+                     height="420" 
                      style="border:0; display:block;" 
                      allowfullscreen="" 
                      loading="lazy" 
