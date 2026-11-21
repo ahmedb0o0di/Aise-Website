@@ -77,4 +77,17 @@ class SiteSetting extends Model
 
         return asset('storage/' . $this->services_hero_image);
     }
+
+    public function getPortfolioHeroImageUrlAttribute(): string
+    {
+        if (empty($this->portfolio_hero_image)) {
+            return asset('assets/images/bg/promo.jpg');
+        }
+
+        if (str_starts_with($this->portfolio_hero_image, 'http') || str_starts_with($this->portfolio_hero_image, 'assets/')) {
+            return asset($this->portfolio_hero_image);
+        }
+
+        return asset('storage/' . $this->portfolio_hero_image);
+    }
 }
