@@ -4,6 +4,7 @@ namespace App\Filament\Pages;
 
 use App\Models\SiteSetting;
 use BackedEnum;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
@@ -74,20 +75,35 @@ class ManageContact extends Page
                     ->columns(2),
 
                 Section::make('Location & Working Hours')
-                    ->description('Physical headquarters address and operational schedule.')
+                    ->description('Physical headquarters address, operational schedule, and Google Maps integration.')
                     ->components([
                         TextInput::make('contact_address')
                             ->label('Physical Office Address')
-                            ->placeholder('125 Creative Street, Design City, New York, NY 10001')
+                            ->placeholder('Oasis C21, El Ahiaa, Hurghada, Red Sea')
                             ->helperText('Full corporate address shown on contact cards and footer.')
                             ->columnSpanFull()
                             ->required(),
 
                         TextInput::make('business_hours')
                             ->label('Business / Working Hours')
-                            ->placeholder('Mon – Fri: 9:00 AM – 6:00 PM | Sat: 10:00 AM – 2:00 PM')
+                            ->placeholder('Sunday - Thursday from 10:00 am - 07:00 pm')
+                            ->helperText('Weekly office and consultation operating schedule.')
                             ->columnSpanFull()
                             ->required(),
+
+                        TextInput::make('google_map_link')
+                            ->label('Google Maps Direct Link')
+                            ->url()
+                            ->placeholder('https://maps.app.goo.gl/JpUVm3qvSJLryCnj8')
+                            ->helperText('Direct shareable link to open the office location in Google Maps.')
+                            ->columnSpanFull(),
+
+                        Textarea::make('google_map_embed')
+                            ->label('Google Maps Embed URL or iFrame')
+                            ->placeholder('https://maps.google.com/maps?q=27.3211575,33.6996941&hl=en&z=15&output=embed')
+                            ->helperText('Embed link or coordinates to render interactive map on the contact page.')
+                            ->rows(3)
+                            ->columnSpanFull(),
                     ]),
             ])
             ->statePath('data')

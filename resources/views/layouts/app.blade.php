@@ -63,7 +63,7 @@
                   <a href="tel:{{ preg_replace('/[^0-9+]/', '', $settings->contact_phone) }}"><i class="fas fa-phone"></i>{{ $settings->contact_phone }}</a>
                @endif
                @if(!empty($settings->contact_address))
-                  <a href="{{ route('contact') }}"><i class="fas fa-map-marker-alt"></i>{{ $settings->contact_address }}</a>
+                  <a href="{{ $settings->google_map_link ?: route('contact') }}" @if(!empty($settings->google_map_link)) target="_blank" rel="noopener noreferrer" @endif><i class="fas fa-map-marker-alt"></i>{{ $settings->contact_address }}</a>
                @endif
             </div>
             <div class="col-lg-5">
@@ -150,9 +150,12 @@
             </div>
             <div class="col-lg-4 col-md-7">
                <h6 class="ft-heading">Contact Info</h6>
-               <div class="ft-ci"><i class="fas fa-map-marker-alt"></i><span>{{ $settings->contact_address }}</span></div>
-               <div class="ft-ci"><i class="fas fa-phone"></i><span>{{ $settings->contact_phone }}</span></div>
-               <div class="ft-ci"><i class="fas fa-envelope"></i><span>{{ $settings->contact_email }}</span></div>
+               <div class="ft-ci"><i class="fas fa-map-marker-alt"></i><span>@if(!empty($settings->google_map_link))<a href="{{ $settings->google_map_link }}" target="_blank" rel="noopener noreferrer" class="text-reset text-decoration-none">{{ $settings->contact_address }}</a>@else{{ $settings->contact_address }}@endif</span></div>
+               <div class="ft-ci"><i class="fas fa-phone"></i><span><a href="tel:{{ preg_replace('/[^0-9+]/', '', $settings->contact_phone) }}" class="text-reset text-decoration-none">{{ $settings->contact_phone }}</a>@if(!empty($settings->contact_phone_secondary))<br><a href="tel:{{ preg_replace('/[^0-9+]/', '', $settings->contact_phone_secondary) }}" class="text-reset text-decoration-none">{{ $settings->contact_phone_secondary }}</a>@endif</span></div>
+               <div class="ft-ci"><i class="fas fa-envelope"></i><span><a href="mailto:{{ $settings->contact_email }}" class="text-reset text-decoration-none">{{ $settings->contact_email }}</a>@if(!empty($settings->contact_email_secondary))<br><a href="mailto:{{ $settings->contact_email_secondary }}" class="text-reset text-decoration-none">{{ $settings->contact_email_secondary }}</a>@endif</span></div>
+               @if(!empty($settings->business_hours))
+               <div class="ft-ci"><i class="fas fa-clock"></i><span>{{ $settings->business_hours }}</span></div>
+               @endif
                <h6 class="ft-heading mt-4">Newsletter</h6>
                <form id="newsletterForm" class="d-flex gap-2">
                   @csrf

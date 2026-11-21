@@ -21,21 +21,39 @@
                   <div class="ci-ico"><i class="fas fa-map-marker-alt"></i></div>
                   <div>
                      <div class="ci-lbl">Our Headquarters</div>
-                     <div class="ci-val">{{ $settings->contact_address }}</div>
+                     <div class="ci-val">
+                        @if(!empty($settings->google_map_link))
+                           <a href="{{ $settings->google_map_link }}" target="_blank" rel="noopener noreferrer" class="text-reset text-decoration-none">
+                              {{ $settings->contact_address }} <i class="fas fa-external-link-alt ms-1 small text-primary"></i>
+                           </a>
+                        @else
+                           {{ $settings->contact_address }}
+                        @endif
+                     </div>
                   </div>
                </div>
                <div class="ci-item">
                   <div class="ci-ico"><i class="fas fa-phone"></i></div>
                   <div>
                      <div class="ci-lbl">Phone Direct</div>
-                     <div class="ci-val">{{ $settings->contact_phone }}<br>{{ $settings->contact_phone_secondary }}</div>
+                     <div class="ci-val">
+                        <a href="tel:{{ preg_replace('/[^0-9+]/', '', $settings->contact_phone) }}" class="text-reset text-decoration-none">{{ $settings->contact_phone }}</a>
+                        @if(!empty($settings->contact_phone_secondary))
+                           <br><a href="tel:{{ preg_replace('/[^0-9+]/', '', $settings->contact_phone_secondary) }}" class="text-reset text-decoration-none">{{ $settings->contact_phone_secondary }}</a>
+                        @endif
+                     </div>
                   </div>
                </div>
                <div class="ci-item">
                   <div class="ci-ico"><i class="fas fa-envelope"></i></div>
                   <div>
                      <div class="ci-lbl">Email Inquiries</div>
-                     <div class="ci-val">{{ $settings->contact_email }}<br>{{ $settings->contact_email_secondary }}</div>
+                     <div class="ci-val">
+                        <a href="mailto:{{ $settings->contact_email }}" class="text-reset text-decoration-none">{{ $settings->contact_email }}</a>
+                        @if(!empty($settings->contact_email_secondary))
+                           <br><a href="mailto:{{ $settings->contact_email_secondary }}" class="text-reset text-decoration-none">{{ $settings->contact_email_secondary }}</a>
+                        @endif
+                     </div>
                   </div>
                </div>
                <div class="ci-item">
@@ -103,6 +121,37 @@
                      </div>
                   </form>
                   <div id="cfFeedback" class="alert alert-success mt-3" style="display:none;"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- GOOGLE MAP EMBED SECTION -->
+   <section class="pb-5 pt-0">
+      <div class="container">
+         <div class="row">
+            <div class="col-12" data-aos="fade-up">
+               <div style="border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,0.08); background:var(--bg2); box-shadow:0 15px 35px rgba(0,0,0,0.25);">
+                  <div class="d-flex justify-content-between align-items-center py-3 px-4 flex-wrap gap-2" style="border-bottom:1px solid rgba(255,255,255,0.08);">
+                     <div>
+                        <h5 class="mb-0 text-white"><i class="fas fa-map-marked-alt text-primary me-2"></i> Find Us on Google Maps</h5>
+                        <small class="text-muted">{{ $settings->contact_address }}</small>
+                     </div>
+                     @if(!empty($settings->google_map_link))
+                        <a href="{{ $settings->google_map_link }}" target="_blank" rel="noopener noreferrer" class="btn-p btn-sm" style="padding:7px 18px; font-size:13px;">
+                           <i class="fas fa-directions me-1"></i> Open Location in Google Maps
+                        </a>
+                     @endif
+                  </div>
+                  <iframe 
+                     src="{{ $settings->google_map_embed ?: 'https://maps.google.com/maps?q=27.3211575,33.6996941&hl=en&z=15&output=embed' }}" 
+                     width="100%" 
+                     height="450" 
+                     style="border:0; display:block;" 
+                     allowfullscreen="" 
+                     loading="lazy" 
+                     referrerpolicy="no-referrer-when-downgrade">
+                  </iframe>
                </div>
             </div>
          </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMessageReceived;
 use App\Models\Article;
 use App\Models\ContactMessage;
 use App\Models\Faq;
@@ -19,6 +20,8 @@ use App\Models\Testimonial;
 use App\Models\TickerItem;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class HomeController extends Controller
@@ -95,7 +98,15 @@ class HomeController extends Controller
             'message' => 'required|string|max:5000',
         ]);
 
-        ContactMessage::create($validated);
+        $contactMessage = ContactMessage::create($validated);
+
+        try {
+            $settings = SiteSetting::getSettings();
+            $recipient = !empty($settings->contact_email) ? $settings->contact_email : 'info@aise-digital.com';
+            Mail::to($recipient)->send(new ContactMessageReceived($contactMessage));
+        } catch (\Throwable $e) {
+            Log::error('Contact form email failed to send: ' . $e->getMessage());
+        }
 
         return response()->json([
             'success' => true,
