@@ -38,7 +38,14 @@ class ServiceForm
                     ->columns(2)
                     ->columnSpanFull(),
                 FileUpload::make('image')
-                    ->image(),
+                    ->label('Header Image (Modal / Pop-up Banner)')
+                    ->image()
+                    ->directory('services')
+                    ->visibility('public')
+                    ->openable()
+                    ->downloadable()
+                    ->helperText('Upload a high-resolution cover/header image for this service. Displayed at the top of the pop-up modal. Recommended: 1200x600px.')
+                    ->columnSpanFull(),
                 TextInput::make('sort_order')
                     ->required()
                     ->numeric()

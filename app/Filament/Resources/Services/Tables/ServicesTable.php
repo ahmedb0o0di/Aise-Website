@@ -22,7 +22,9 @@ class ServicesTable
                     ->searchable(),
                 TextColumn::make('icon')
                     ->searchable(),
-                ImageColumn::make('image'),
+                ImageColumn::make('image')
+                    ->label('Header Image')
+                    ->circular(),
                 TextColumn::make('sort_order')
                     ->numeric()
                     ->sortable(),

@@ -3,12 +3,28 @@
 @section('title', 'Services')
 
 @section('content')
-   <!-- PAGE HEADER -->
-   <section class="py-5 bg-dark text-white text-center" style="padding-top:140px !important; background: var(--bg2);">
-      <div class="container">
-         <div class="sec-badge mx-auto mb-3">Enterprise Solutions</div>
-         <h1 class="display-4 fw-bold">Our Digital Capabilities</h1>
-         <p class="lead text-muted mx-auto" style="max-width:650px;">A comprehensive suite of digital engineering, AI, marketing, and media solutions designed for high-growth enterprises.</p>
+   <!-- SERVICES HERO BANNER -->
+   <section class="services-hero-banner position-relative text-center d-flex align-items-center justify-content-center" 
+      style="min-height: 420px; padding: 160px 0 90px; background-image: url('{{ $settings->services_hero_image_url }}'); background-size: cover; background-position: center center; position: relative; overflow: hidden;">
+      <!-- Elegant Dark Gradient Overlay guaranteeing high contrast in both themes -->
+      <div class="position-absolute top-0 start-0 w-100 h-100" 
+         style="background: linear-gradient(180deg, rgba(12, 12, 16, 0.72) 0%, rgba(12, 12, 16, 0.92) 100%); pointer-events: none;"></div>
+      <div class="container position-relative" style="z-index: 2;">
+         <div class="sec-badge mx-auto mb-3" data-aos="fade-down" style="background: rgba(255, 82, 37, 0.15); color: #ff5225; border: 1px solid rgba(255, 82, 37, 0.35);">
+            <i class="fas fa-cubes me-1"></i> Enterprise Solutions
+         </div>
+         <h1 class="display-4 fw-bold text-white mb-3" data-aos="fade-up" style="letter-spacing: -0.5px;">
+            Our Digital <span style="background: linear-gradient(135deg, #ff5225 0%, #ff8a65 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Capabilities</span>
+         </h1>
+         <p class="lead mx-auto mb-4" data-aos="fade-up" data-aos-delay="100" style="max-width: 680px; color: rgba(255, 255, 255, 0.88); font-size: 1.15rem; line-height: 1.6;">
+            A comprehensive suite of digital engineering, AI, marketing, and media solutions designed for high-growth enterprises.
+         </p>
+         <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
+            <ol class="breadcrumb justify-content-center mb-0" style="background: transparent; font-size: 0.9rem;">
+               <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: rgba(255, 255, 255, 0.75); text-decoration: none;"><i class="fas fa-home me-1"></i> Home</a></li>
+               <li class="breadcrumb-item active" aria-current="page" style="color: #ff5225 !important; font-weight: 600;">Services</li>
+            </ol>
+         </nav>
       </div>
    </section>
 

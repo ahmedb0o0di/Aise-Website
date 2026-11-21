@@ -111,11 +111,13 @@
   border: 1px solid var(--border);
   border-radius: var(--rl);
   overflow: hidden;
+  position: relative !important;
 }
 .modal-header {
   background: var(--bg2);
   border-bottom: 1px solid var(--border);
-  padding: 20px 28px;
+  padding: 20px 65px 20px 28px;
+  position: relative;
 }
 .modal-title {
   font-family: "Phudu", cursive;
@@ -124,36 +126,41 @@
 .modal-body {
   padding: 28px;
 }
-/* Modal Close Button */
+/* Modal Close Button - Signature Orange Circle Pinned Top-Right */
 .modal-close-btn,
 .btn-close,
 .modal-header .btn-close {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
-  min-height: 40px;
-  padding: 0;
-  margin: 0 0 0 auto;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08) !important;
+  position: absolute !important;
+  top: 16px !important;
+  right: 16px !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 50% !important;
+  background: #ff5225 !important;
   background-image: none !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
-  color: #f1f5f9 !important;
-  font-size: 1.05rem;
+  border: 2px solid rgba(255, 255, 255, 0.45) !important;
+  color: #ffffff !important;
+  font-size: 1.05rem !important;
   opacity: 1 !important;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  outline: none;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  z-index: 1060 !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 4px 14px rgba(255, 82, 37, 0.45) !important;
+  outline: none !important;
 }
 
 .modal-close-btn i {
-  line-height: 1;
-  transition: transform 0.3s ease;
+  color: #ffffff !important;
+  line-height: 1 !important;
+  font-size: 15px !important;
+  transition: transform 0.3s ease !important;
 }
 
 .btn-close::before,
@@ -162,7 +169,7 @@
   position: absolute;
   width: 14px;
   height: 2px;
-  background-color: currentColor;
+  background-color: #ffffff !important;
   border-radius: 2px;
   transition: all 0.25s ease;
 }
@@ -179,13 +186,17 @@
 .modal-close-btn:focus,
 .btn-close:hover,
 .btn-close:focus {
-  background-color: var(--primary) !important;
-  border-color: var(--primary) !important;
+  background: #e0441b !important;
+  border-color: #ffffff !important;
   color: #ffffff !important;
-  transform: rotate(90deg) scale(1.1);
-  box-shadow: 0 4px 16px rgba(255, 82, 37, 0.45);
+  transform: rotate(90deg) scale(1.1) !important;
+  box-shadow: 0 6px 20px rgba(255, 82, 37, 0.65) !important;
   opacity: 1 !important;
-  outline: none;
+  outline: none !important;
+}
+
+.modal-close-btn:hover i {
+  transform: scale(1.15);
 }
 
 .btn-close:hover::before,
@@ -199,19 +210,20 @@
 [data-theme="light"] .modal-close-btn,
 [data-theme="light"] .btn-close,
 [data-theme="light"] .modal-header .btn-close {
-  background: rgba(0, 0, 0, 0.06) !important;
-  border-color: rgba(0, 0, 0, 0.14) !important;
-  color: #1e293b !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  background: #ff5225 !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(255, 82, 37, 0.45) !important;
 }
 
 [data-theme="light"] .modal-close-btn:hover,
 [data-theme="light"] .modal-close-btn:focus,
 [data-theme="light"] .btn-close:hover,
 [data-theme="light"] .btn-close:focus {
-  background-color: var(--primary) !important;
-  border-color: var(--primary) !important;
+  background: #e0441b !important;
+  border-color: #ffffff !important;
   color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(255, 82, 37, 0.65) !important;
 }
 
 /* Modal Bottom Dismiss Button */

@@ -182,13 +182,20 @@
    @foreach($services as $svc)
    <div class="modal fade" id="svcM{{ $svc->id }}" tabindex="-1">
       <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-         <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title">{{ $svc->title }}</h5>
-               <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+         <div class="modal-content overflow-hidden">
+            <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+            <div class="mod-svc-header-img position-relative" style="width: 100%; height: 210px; overflow: hidden; background: #0c0c10;">
+               <img src="{{ $svc->image_url }}" alt="{{ $svc->title }}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+               <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,12,16,0.2) 0%, rgba(12,12,16,0.85) 100%);"></div>
+               <div class="position-absolute bottom-0 start-0 p-4 d-flex align-items-center gap-3">
+                  <div class="mod-svc-ico mb-0" style="width: 52px; height: 52px; min-width: 52px; font-size: 1.35rem; background: rgba(255, 82, 37, 0.95); color: #fff; box-shadow: 0 4px 14px rgba(0,0,0,0.4); border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="{{ $svc->icon }}"></i></div>
+                  <div>
+                     <span class="badge mb-1" style="background: rgba(255, 82, 37, 0.2); color: #ff5225; border: 1px solid rgba(255, 82, 37, 0.35); font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase;">Service Overview</span>
+                     <h4 class="modal-title text-white mb-0" style="font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.6);">{{ $svc->title }}</h4>
+                  </div>
+               </div>
             </div>
-            <div class="modal-body">
-               <div class="mod-svc-ico"><i class="{{ $svc->icon }}"></i></div>
+            <div class="modal-body pt-3">
                <p style="color:var(--text2);margin-bottom:22px;line-height:1.82">{{ $svc->full_description ?? $svc->short_description }}</p>
                @if(!empty($svc->included_features) && is_array($svc->included_features))
                   <h6 style="font-weight:700;margin-bottom:14px">What's Included</h6>
@@ -213,13 +220,13 @@
    @foreach($projects as $p)
    <div class="modal fade" id="pfM{{ $p->id }}" tabindex="-1">
       <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-         <div class="modal-content">
+         <div class="modal-content overflow-hidden">
+            <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
             <div class="modal-header">
                <div>
                   <div class="modal-cat">{{ $p->category->name ?? 'Project' }}</div>
                   <h5 class="modal-title">{{ $p->title }}</h5>
                </div>
-               <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body">
                <img src="{{ asset($p->image ?? 'assets/images/portfolio/p1.jpg') }}" alt="{{ $p->title }}" class="mod-proj-img">
@@ -258,10 +265,10 @@
    @foreach($team as $tm)
    <div class="modal fade" id="tmM{{ $tm->id }}" tabindex="-1">
       <div class="modal-dialog modal-md modal-dialog-centered">
-         <div class="modal-content">
+         <div class="modal-content overflow-hidden">
+            <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
             <div class="modal-header">
                <h5 class="modal-title">{{ $tm->name }}</h5>
-               <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body text-center">
                <img src="{{ asset($tm->image ?? 'assets/images/team/team-1.jpg') }}" alt="{{ $tm->name }}" style="width:130px;height:130px;border-radius:50%;object-fit:cover;margin:0 auto 16px;border:3px solid var(--primary)">
@@ -282,13 +289,13 @@
    @foreach($articles as $art)
    <div class="modal fade" id="artM{{ $art->id }}" tabindex="-1">
       <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-         <div class="modal-content">
+         <div class="modal-content overflow-hidden">
+            <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
             <div class="modal-header">
                <div>
                   <div class="news-cat">{{ $art->category }}</div>
                   <h5 class="modal-title">{{ $art->title }}</h5>
                </div>
-               <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body">
                @if(!empty($art->image))
