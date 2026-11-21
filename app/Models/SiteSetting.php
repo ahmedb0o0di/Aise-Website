@@ -51,4 +51,17 @@ class SiteSetting extends Model
 
         return asset('storage/' . $this->contact_hero_image);
     }
+
+    public function getAboutHeroImageUrlAttribute(): string
+    {
+        if (empty($this->about_hero_image)) {
+            return asset('assets/images/bg/promo.jpg');
+        }
+
+        if (str_starts_with($this->about_hero_image, 'http') || str_starts_with($this->about_hero_image, 'assets/')) {
+            return asset($this->about_hero_image);
+        }
+
+        return asset('storage/' . $this->about_hero_image);
+    }
 }
