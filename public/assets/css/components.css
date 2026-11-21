@@ -559,6 +559,28 @@ button.mfp-close:focus {
   transform: scale(1.08);
 }
 
+/* ==================== PORTFOLIO SINGLE LINE TABS ==================== */
+.filter-tabs {
+  display: inline-flex !important;
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 36px;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 4px 6px;
+}
+.filter-tabs::-webkit-scrollbar {
+  display: none;
+}
+.filter-tabs .ftab {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
 /* ==================== PORTFOLIO PAGINATION ==================== */
 .portfolio-pagination {
   display: inline-flex;
@@ -582,12 +604,12 @@ button.mfp-close:focus {
   font-weight: 600;
   font-size: 0.92rem;
   color: var(--text);
-  background: var(--card-bg, #ffffff);
+  background: var(--card, #ffffff);
   border: 1px solid var(--border);
-  transition: all 0.25s ease;
+  transition: var(--tr);
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--sh1);
 }
 .portfolio-pagination .page-item.active .page-link {
   background: var(--primary) !important;

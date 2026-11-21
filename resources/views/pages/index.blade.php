@@ -184,23 +184,23 @@
    <!-- ==================== PORTFOLIO ==================== -->
    <section id="portfolio">
       <div class="container">
-         <div class="row sec-hd align-items-end">
-            <div class="col-lg-6 aos-init aos-animate" data-aos="fade-right">
-               <div class="sec-badge">Our Work</div>
-               <h2 class="sec-title">Recent <span>Projects</span></h2>
+         <div class="row sec-hd text-center mb-4">
+            <div class="col-12" data-aos="fade-up">
+               <div class="sec-badge mx-auto mb-2">Our Work</div>
+               <h2 class="sec-title mb-3">Recent <span>Projects</span></h2>
             </div>
-            <div class="col-lg-6 aos-init aos-animate" data-aos="fade-left">
-               <div class="filter-tabs justify-content-lg-end">
-                  <button class="ftab active" data-filter="all">All</button>
+            <div class="col-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+               <div class="filter-tabs justify-content-center flex-nowrap" style="white-space: nowrap; overflow-x: auto; max-width: 100%;">
+                  <button class="ftab active" data-filter="all">All Projects</button>
                   @foreach($categories as $cat)
                      <button class="ftab" data-filter="{{ $cat->slug }}">{{ $cat->name }}</button>
                   @endforeach
                </div>
             </div>
          </div>
-         <div class="row g-4" id="pfGrid">
+         <div class="row g-4" id="pfGrid" data-aos="fade-up" data-aos-delay="150">
             @foreach($projects as $p)
-            <div class="col-lg-4 col-md-6 pf-cat aos-init aos-animate" data-cat="{{ $p->filter_categories }}" data-aos="fade-up">
+            <div class="col-lg-4 col-md-6 pf-cat" data-cat="{{ $p->filter_categories }}">
                <div class="pf-item" style="height:320px;" data-bs-toggle="modal" data-bs-target="#pfM{{ $p->id }}">
                   <img class="pf-img" src="{{ asset($p->image ?? 'assets/images/portfolio/p1.jpg') }}" alt="{{ $p->title }}">
                   <div class="pf-ov">

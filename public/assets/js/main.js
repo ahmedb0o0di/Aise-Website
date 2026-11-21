@@ -324,7 +324,7 @@
 
       // If on the homepage where #pfPagination is present:
       if ($pagination.length) {
-        const itemsPerPage = 6; // 2 rows x 3 columns = 6 projects
+        const itemsPerPage = 6; // 2 rows x 3 columns = 6 projects per page
         let currentFilter = 'all';
         let currentPage = 1;
 
@@ -333,7 +333,7 @@
           const matchingItems = [];
 
           $items.each(function () {
-            const rawCat = String($(this).data('cat') || '').toLowerCase().trim();
+            const rawCat = String($(this).attr('data-cat') || $(this).data('cat') || '').toLowerCase().trim();
             const cats = rawCat.split(/\s+|,/);
             if (currentFilter === 'all' || cats.includes(currentFilter) || rawCat === currentFilter) {
               matchingItems.push(this);
@@ -351,9 +351,9 @@
           $items.each(function () {
             const idx = matchingItems.indexOf(this);
             if (idx >= startIndex && idx < endIndex) {
-              $(this).stop(true, true).css('display', 'block').fadeIn(280);
+              $(this).removeClass('d-none').stop(true, true).css({ display: '', opacity: 0 }).animate({ opacity: 1 }, 250);
             } else {
-              $(this).stop(true, true).hide();
+              $(this).addClass('d-none').stop(true, true).css({ display: 'none', opacity: 0 });
             }
           });
 
@@ -395,7 +395,9 @@
             const $sec = $('#portfolio');
             if ($sec.length) {
               const targetTop = $sec.offset().top - 90;
-              $('html, body').animate({ scrollTop: targetTop }, 350);
+              if ($(window).scrollTop() > targetTop + 120) {
+                $('html, body').animate({ scrollTop: targetTop }, 300);
+              }
             }
           }
         }
@@ -430,12 +432,12 @@
           $(this).addClass('active');
 
           $('.pf-cat').each(function () {
-            const rawCat = String($(this).data('cat') || '').toLowerCase().trim();
+            const rawCat = String($(this).attr('data-cat') || $(this).data('cat') || '').toLowerCase().trim();
             const cats = rawCat.split(/\s+|,/);
             if (filter === 'all' || cats.includes(filter) || rawCat === filter) {
-              $(this).stop().fadeIn(320);
+              $(this).removeClass('d-none').stop(true, true).css({ display: '', opacity: 0 }).animate({ opacity: 1 }, 250);
             } else {
-              $(this).stop().fadeOut(200);
+              $(this).addClass('d-none').stop(true, true).css({ display: 'none', opacity: 0 });
             }
           });
         });

@@ -29,7 +29,7 @@
    <link rel="stylesheet" href="{{ asset('assets/css/vendor/magnific-popup.css') }}">
 
    <!-- Structured Custom Stylesheets -->
-   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}?v={{ file_exists(public_path('assets/css/style.css')) ? filemtime(public_path('assets/css/style.css')) : time() }}">
    @stack('styles')
 </head>
 
@@ -323,7 +323,7 @@
    <script src="{{ asset('assets/js/vendor/jquery.magnific-popup.min.js') }}"></script>
 
    <!-- Main JS -->
-   <script src="{{ asset('assets/js/main.js') }}"></script>
+   <script src="{{ asset('assets/js/main.js') }}?v={{ file_exists(public_path('assets/js/main.js')) ? filemtime(public_path('assets/js/main.js')) : time() }}"></script>
 
    <!-- AJAX Handlers for Newsletter & Forms -->
    <script>

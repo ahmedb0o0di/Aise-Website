@@ -306,10 +306,9 @@ class DatabaseSeeder extends Seeder
 
         // 8. Portfolio Categories & Projects
         $categories = [
+            'web' => 'Web Design',
             'branding' => 'Branding',
             'social' => 'Social Media',
-            'digital' => 'Digital / SEO',
-            'web' => 'Web Design',
         ];
         $catModels = [];
         foreach ($categories as $slug => $name) {
