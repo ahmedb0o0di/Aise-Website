@@ -329,11 +329,12 @@
         let currentPage = 1;
 
         function updateDisplay(animateScroll) {
-          const $items = $grid.find('.pf-cat');
+          // Select only direct project card columns with data-cat, never the inner category badge text
+          const $items = $grid.children('[data-cat]');
           const matchingItems = [];
 
           $items.each(function () {
-            const rawCat = String($(this).attr('data-cat') || $(this).data('cat') || '').toLowerCase().trim();
+            const rawCat = String($(this).attr('data-cat') || '').toLowerCase().trim();
             const cats = rawCat.split(/\s+|,/);
             if (currentFilter === 'all' || cats.includes(currentFilter) || rawCat === currentFilter) {
               matchingItems.push(this);
@@ -431,8 +432,8 @@
           $('.ftab').removeClass('active');
           $(this).addClass('active');
 
-          $('.pf-cat').each(function () {
-            const rawCat = String($(this).attr('data-cat') || $(this).data('cat') || '').toLowerCase().trim();
+          $grid.children('[data-cat]').each(function () {
+            const rawCat = String($(this).attr('data-cat') || '').toLowerCase().trim();
             const cats = rawCat.split(/\s+|,/);
             if (filter === 'all' || cats.includes(filter) || rawCat === filter) {
               $(this).removeClass('d-none').stop(true, true).css({ display: '', opacity: 0 }).animate({ opacity: 1 }, 250);
