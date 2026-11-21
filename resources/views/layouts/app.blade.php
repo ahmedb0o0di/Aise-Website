@@ -219,7 +219,7 @@
             <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
             <div class="modal-header">
                <div>
-                  <div class="modal-cat">{{ $p->category->name ?? 'Project' }}</div>
+                  <div class="modal-cat">{{ $p->category_display_name }}</div>
                   <h5 class="modal-title">{{ $p->title }}</h5>
                </div>
             </div>

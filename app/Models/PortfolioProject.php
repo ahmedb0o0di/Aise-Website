@@ -20,4 +20,22 @@ class PortfolioProject extends Model
     {
         return $this->belongsTo(PortfolioCategory::class, 'portfolio_category_id');
     }
+
+    public function getFilterCategoriesAttribute(): string
+    {
+        if ($this->slug === 'sc-dmc-global-travel-platform') {
+            return 'branding web';
+        }
+
+        return $this->category->slug ?? 'all';
+    }
+
+    public function getCategoryDisplayNameAttribute(): string
+    {
+        if ($this->slug === 'sc-dmc-global-travel-platform') {
+            return 'Branding & Web Design';
+        }
+
+        return $this->category->name ?? 'Project';
+    }
 }

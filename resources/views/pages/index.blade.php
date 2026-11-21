@@ -200,12 +200,12 @@
          </div>
          <div class="row g-4" id="pfGrid">
             @foreach($projects as $p)
-            <div class="col-lg-{{ $loop->first ? '8' : '4' }} pf-cat aos-init aos-animate" data-cat="{{ $p->category->slug ?? 'all' }}" data-aos="fade-up">
+            <div class="col-lg-{{ $loop->first ? '8' : '4' }} pf-cat aos-init aos-animate" data-cat="{{ $p->filter_categories }}" data-aos="fade-up">
                <div class="pf-item" style="height:{{ $p->card_height ?? 300 }}px;" data-bs-toggle="modal" data-bs-target="#pfM{{ $p->id }}">
                   <img class="pf-img" src="{{ asset($p->image ?? 'assets/images/portfolio/p1.jpg') }}" alt="{{ $p->title }}">
                   <div class="pf-ov">
                      <div>
-                        <div class="pf-cat">{{ $p->category->name ?? 'Work' }}</div>
+                        <div class="pf-cat">{{ $p->category_display_name }}</div>
                         <h3 class="pf-name">{{ $p->title }}</h3>
                      </div>
                   </div>

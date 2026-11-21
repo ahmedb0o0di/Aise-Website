@@ -43,12 +43,12 @@
          </div>
          <div class="row g-4" id="pfGrid">
             @foreach($projects as $p)
-            <div class="col-lg-4 col-md-6 pf-cat" data-cat="{{ $p->category->slug ?? 'all' }}" data-aos="fade-up">
+            <div class="col-lg-4 col-md-6 pf-cat" data-cat="{{ $p->filter_categories }}" data-aos="fade-up">
                <div class="pf-item" style="height:320px;" data-bs-toggle="modal" data-bs-target="#pfM{{ $p->id }}">
                   <img class="pf-img" src="{{ asset($p->image ?? 'assets/images/portfolio/p1.jpg') }}" alt="{{ $p->title }}">
                   <div class="pf-ov">
                      <div>
-                        <div class="pf-cat">{{ $p->category->name ?? 'Work' }}</div>
+                        <div class="pf-cat">{{ $p->category_display_name }}</div>
                         <h3 class="pf-name">{{ $p->title }}</h3>
                      </div>
                   </div>

@@ -320,13 +320,14 @@
      */
     initPortfolioFilter: function () {
       $('.ftab').on('click', function () {
-        const filter = $(this).data('filter');
+        const filter = String($(this).data('filter') || '').toLowerCase();
         $('.ftab').removeClass('active');
         $(this).addClass('active');
 
         $('.pf-cat').each(function () {
-          const itemCat = $(this).data('cat');
-          if (filter === 'all' || itemCat === filter) {
+          const rawCat = String($(this).data('cat') || '').toLowerCase().trim();
+          const cats = rawCat.split(/\s+|,/);
+          if (filter === 'all' || cats.includes(filter) || rawCat === filter) {
             $(this).stop().fadeIn(320);
           } else {
             $(this).stop().fadeOut(200);
