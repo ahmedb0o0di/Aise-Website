@@ -27,7 +27,7 @@ class PortfolioProject extends Model
             return 'branding web';
         }
 
-        if ($this->slug === 'tijan-modest-fashion-platform') {
+        if (in_array($this->slug, ['tijan-modest-fashion-platform', 'noush-cosmetics-platform'])) {
             return 'social web';
         }
 
@@ -44,7 +44,7 @@ class PortfolioProject extends Model
             return 'Branding & Web Design';
         }
 
-        if ($this->slug === 'tijan-modest-fashion-platform') {
+        if (in_array($this->slug, ['tijan-modest-fashion-platform', 'noush-cosmetics-platform'])) {
             return 'Social Media & Web Design';
         }
 
