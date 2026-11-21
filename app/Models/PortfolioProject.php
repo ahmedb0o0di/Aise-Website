@@ -23,7 +23,7 @@ class PortfolioProject extends Model
 
     public function getFilterCategoriesAttribute(): string
     {
-        if (in_array($this->slug, ['sc-dmc-global-travel-platform', 'top-marine-red-sea-platform', 'catch-your-trip-platform', 'kiko-sharm-platform', 'almasa-construction-platform', 'power-factor-solutions-platform'])) {
+        if (in_array($this->slug, ['sc-dmc-global-travel-platform', 'top-marine-red-sea-platform', 'catch-your-trip-platform', 'kiko-sharm-platform', 'almasa-construction-platform', 'power-factor-solutions-platform', 'caregate-group-platform'])) {
             return 'branding web';
         }
 
@@ -40,6 +40,10 @@ class PortfolioProject extends Model
 
     public function getCategoryDisplayNameAttribute(): string
     {
+        if ($this->slug === 'caregate-group-platform') {
+            return 'Brand Identity, Web & ERP Platform';
+        }
+
         if (in_array($this->slug, ['sc-dmc-global-travel-platform', 'top-marine-red-sea-platform', 'catch-your-trip-platform', 'kiko-sharm-platform', 'almasa-construction-platform', 'power-factor-solutions-platform'])) {
             return 'Branding & Web Design';
         }
