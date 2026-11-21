@@ -27,7 +27,7 @@ class PortfolioProject extends Model
             return 'branding web';
         }
 
-        if (in_array($this->slug, ['tijan-modest-fashion-platform', 'noush-cosmetics-platform'])) {
+        if (in_array($this->slug, ['tijan-modest-fashion-platform', 'noush-cosmetics-platform', 'project-lifestyle-community-platform'])) {
             return 'social web';
         }
 
@@ -42,6 +42,10 @@ class PortfolioProject extends Model
     {
         if ($this->slug === 'caregate-group-platform') {
             return 'Brand Identity, Web & ERP Platform';
+        }
+
+        if ($this->slug === 'project-lifestyle-community-platform') {
+            return 'Private Social Network & Web Platform';
         }
 
         if (in_array($this->slug, ['sc-dmc-global-travel-platform', 'top-marine-red-sea-platform', 'catch-your-trip-platform', 'kiko-sharm-platform', 'almasa-construction-platform', 'power-factor-solutions-platform'])) {
