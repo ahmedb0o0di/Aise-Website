@@ -31,7 +31,7 @@ class PortfolioProject extends Model
             return 'social web';
         }
 
-        if (in_array($this->slug, ['shakshak-tours-platform', 'ern-egypt-platform', 'tourlives-travel-platform', 'you2eu-platform', 'robota-industries-platform', 'n62-creative-studio-platform'])) {
+        if (in_array($this->slug, ['shakshak-tours-platform', 'ern-egypt-platform', 'tourlives-travel-platform', 'you2eu-platform', 'robota-industries-platform', 'n62-creative-studio-platform', 'structurflex-contracting-platform'])) {
             return 'web';
         }
 
@@ -48,7 +48,7 @@ class PortfolioProject extends Model
             return 'Social Media & Web Design';
         }
 
-        if (in_array($this->slug, ['shakshak-tours-platform', 'ern-egypt-platform', 'tourlives-travel-platform', 'you2eu-platform', 'robota-industries-platform', 'n62-creative-studio-platform'])) {
+        if (in_array($this->slug, ['shakshak-tours-platform', 'ern-egypt-platform', 'tourlives-travel-platform', 'you2eu-platform', 'robota-industries-platform', 'n62-creative-studio-platform', 'structurflex-contracting-platform'])) {
             return 'Web Design & Development';
         }
 
