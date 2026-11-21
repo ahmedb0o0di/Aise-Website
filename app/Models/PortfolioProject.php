@@ -27,6 +27,10 @@ class PortfolioProject extends Model
             return 'branding web';
         }
 
+        if ($this->slug === 'shakshak-tours-platform') {
+            return 'web';
+        }
+
         return $this->category->slug ?? 'all';
     }
 
@@ -34,6 +38,10 @@ class PortfolioProject extends Model
     {
         if (in_array($this->slug, ['sc-dmc-global-travel-platform', 'top-marine-red-sea-platform', 'catch-your-trip-platform', 'kiko-sharm-platform'])) {
             return 'Branding & Web Design';
+        }
+
+        if ($this->slug === 'shakshak-tours-platform') {
+            return 'Web Design & Development';
         }
 
         return $this->category->name ?? 'Project';
