@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <!-- Sun & Ray Gradient: Warm Gold to Vibrant Orange -->
+    <linearGradient id="sunGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="50%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    
+    <!-- Turquoise Palm & Accent Gradient -->
+    <linearGradient id="seaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#0891B2"/>
+    </linearGradient>
+
+    <!-- Drop Shadow for Depth -->
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <g transform="translate(30, 20)">
+    <!-- SUN RAYS radiating outward from center (270, 240) -->
+    <!-- Top Ray (Vertical) -->
+    <polygon points="266,20 274,20 271,110 269,110" fill="url(#sunGrad)"/>
+    
+    <!-- Left Rays -->
+    <polygon points="215,38 223,34 238,122 235,124" fill="url(#sunGrad)"/>
+    <polygon points="160,70 167,64 205,142 201,146" fill="url(#sunGrad)"/>
+    <polygon points="112,118 118,110 178,172 173,176" fill="url(#sunGrad)"/>
+    <polygon points="76,174 80,165 158,206 155,212" fill="url(#sunGrad)"/>
+    <polygon points="56,238 58,228 148,244 147,252" fill="url(#sunGrad)"/>
+
+    <!-- Right Rays -->
+    <polygon points="317,34 325,38 305,124 302,122" fill="url(#sunGrad)"/>
+    <polygon points="373,64 380,70 339,146 335,142" fill="url(#sunGrad)"/>
+    <polygon points="422,110 428,118 367,176 362,172" fill="url(#sunGrad)"/>
+    <polygon points="460,165 464,174 385,212 382,206" fill="url(#sunGrad)"/>
+    <polygon points="482,228 484,238 393,252 392,244" fill="url(#sunGrad)"/>
+
+    <!-- SUN ARC -->
+    <path d="M 145,255 A 130,130 0 0,1 395,255" fill="none" stroke="url(#sunGrad)" stroke-width="15" stroke-linecap="round"/>
+
+    <!-- FLYING SEAGULLS inside the sun arc -->
+    <path d="M 195,210 Q 203,203 211,210 Q 219,203 227,210" fill="none" stroke="url(#seaGrad)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 226,198 Q 232,192 238,198 Q 244,192 250,198" fill="none" stroke="url(#seaGrad)" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- PALM TREE -->
+    <!-- Curved Trunk -->
+    <path d="M 365,285 C 362,240 348,200 326,165 C 324,168 338,202 342,285 Z" fill="url(#seaGrad)"/>
+    
+    <!-- Palm Fronds / Leaves -->
+    <!-- Top-Left Frond -->
+    <path d="M 326,165 C 305,145 285,150 270,168 C 290,162 310,160 326,165 Z" fill="url(#seaGrad)"/>
+    <path d="M 326,165 C 298,135 272,130 252,145 C 275,140 302,148 326,165 Z" fill="url(#seaGrad)"/>
+    <!-- Top-Right Frond -->
+    <path d="M 326,165 C 345,135 372,130 395,145 C 372,140 348,148 326,165 Z" fill="url(#seaGrad)"/>
+    <!-- Middle-Right Frond -->
+    <path d="M 326,165 C 352,150 380,158 395,182 C 375,170 350,168 326,165 Z" fill="url(#seaGrad)"/>
+    <!-- Lower-Right Frond drooping over the arc -->
+    <path d="M 326,165 C 342,175 365,195 372,228 C 360,202 342,185 326,165 Z" fill="url(#seaGrad)"/>
+
+    <!-- TYPOGRAPHY -->
+    <!-- 'TOUR' - Bold, Dynamic, High Contrast Amber -->
+    <text x="75" y="360" font-family="'Arial Black', 'Impact', 'Segoe UI', sans-serif" font-weight="900" font-size="78" fill="url(#sunGrad)" letter-spacing="4">TOUR</text>
+
+    <!-- 'Lives' - Stylish, Elegant Italic Cyan -->
+    <text x="325" y="360" font-family="'Segoe UI', 'Trebuchet MS', 'Arial', sans-serif" font-weight="800" font-style="italic" font-size="78" fill="url(#seaGrad)" letter-spacing="2">Lives</text>
+
+    <!-- Subtle Tagline Underneath -->
+    <text x="270" y="398" font-family="'Segoe UI', Arial, sans-serif" font-weight="700" font-size="13" fill="#64748B" letter-spacing="8" text-anchor="middle">RED SEA ADVENTURES &amp; DAY TOURS</text>
+  </g>
+</svg>
