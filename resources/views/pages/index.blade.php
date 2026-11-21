@@ -217,6 +217,7 @@
       </div>
    </section>
 
+   @if(false)
    <!-- ==================== TEAM ==================== -->
    <section id="team">
       <div class="container">
@@ -254,7 +255,9 @@
          </div>
       </div>
    </section>
+   @endif
 
+   @if(false)
    <!-- ==================== PRICING ==================== -->
    <section id="pricing">
       <div class="container">
@@ -308,7 +311,9 @@
          </div>
       </div>
    </section>
+   @endif
 
+   @if(false)
    <!-- ==================== TESTIMONIALS ==================== -->
    <section id="testimonials">
       <div class="tst-bg"></div>
@@ -355,6 +360,7 @@
          </div>
       </div>
    </section>
+   @endif
 
    <!-- ==================== FAQ ==================== -->
    <section id="faq">

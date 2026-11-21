@@ -104,8 +104,6 @@
                <li class="nav-item"><a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">About</a></li>
                <li class="nav-item"><a class="nav-link {{ request()->routeIs('services') ? 'active' : '' }}" href="{{ route('services') }}">Services</a></li>
                <li class="nav-item"><a class="nav-link {{ request()->routeIs('portfolio') ? 'active' : '' }}" href="{{ route('portfolio') }}">Work</a></li>
-               <li class="nav-item"><a class="nav-link {{ request()->routeIs('team') ? 'active' : '' }}" href="{{ route('team') }}">Team</a></li>
-               <li class="nav-item"><a class="nav-link {{ request()->routeIs('pricing') ? 'active' : '' }}" href="{{ route('pricing') }}">Pricing</a></li>
                <li class="nav-item"><a class="nav-link {{ request()->routeIs('blog') ? 'active' : '' }}" href="{{ route('blog') }}">Blog</a></li>
                <li class="nav-item"><a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Contact</a></li>
             </ul>
@@ -141,10 +139,8 @@
                <h6 class="ft-heading">Company</h6>
                <ul class="ft-links">
                   <li><a href="{{ route('about') }}">About Us</a></li>
-                  <li><a href="{{ route('team') }}">Our Team</a></li>
                   <li><a href="{{ route('portfolio') }}">Portfolio</a></li>
                   <li><a href="{{ route('blog') }}">Blog</a></li>
-                  <li><a href="{{ route('pricing') }}">Pricing</a></li>
                   <li><a href="{{ route('contact') }}">Contact</a></li>
                </ul>
             </div>
