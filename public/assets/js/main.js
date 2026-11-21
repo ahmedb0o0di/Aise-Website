@@ -316,24 +316,130 @@
     },
 
     /**
-     * 11. Portfolio Category Filtering
+     * 11. Portfolio Category Filtering & Pagination
      */
     initPortfolioFilter: function () {
-      $('.ftab').on('click', function () {
-        const filter = String($(this).data('filter') || '').toLowerCase();
-        $('.ftab').removeClass('active');
-        $(this).addClass('active');
+      const $grid = $('#pfGrid');
+      const $pagination = $('#pfPagination');
 
-        $('.pf-cat').each(function () {
-          const rawCat = String($(this).data('cat') || '').toLowerCase().trim();
-          const cats = rawCat.split(/\s+|,/);
-          if (filter === 'all' || cats.includes(filter) || rawCat === filter) {
-            $(this).stop().fadeIn(320);
-          } else {
-            $(this).stop().fadeOut(200);
+      // If on the homepage where #pfPagination is present:
+      if ($pagination.length) {
+        const itemsPerPage = 6; // 2 rows x 3 columns = 6 projects
+        let currentFilter = 'all';
+        let currentPage = 1;
+
+        function updateDisplay(animateScroll) {
+          const $items = $grid.find('.pf-cat');
+          const matchingItems = [];
+
+          $items.each(function () {
+            const rawCat = String($(this).data('cat') || '').toLowerCase().trim();
+            const cats = rawCat.split(/\s+|,/);
+            if (currentFilter === 'all' || cats.includes(currentFilter) || rawCat === currentFilter) {
+              matchingItems.push(this);
+            }
+          });
+
+          const totalItems = matchingItems.length;
+          const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+          if (currentPage > totalPages) currentPage = 1;
+
+          const startIndex = (currentPage - 1) * itemsPerPage;
+          const endIndex = startIndex + itemsPerPage;
+
+          // Show only items in the current page slice
+          $items.each(function () {
+            const idx = matchingItems.indexOf(this);
+            if (idx >= startIndex && idx < endIndex) {
+              $(this).stop(true, true).css('display', 'block').fadeIn(280);
+            } else {
+              $(this).stop(true, true).hide();
+            }
+          });
+
+          // Build pagination controls
+          $pagination.empty();
+          if (totalPages > 1) {
+            // Prev button
+            const prevDisabled = currentPage === 1 ? 'disabled' : '';
+            $pagination.append(`
+              <li class="page-item ${prevDisabled}">
+                <button type="button" class="page-link" data-page="${currentPage - 1}" aria-label="Previous">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+              </li>
+            `);
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+              const activeClass = i === currentPage ? 'active' : '';
+              $pagination.append(`
+                <li class="page-item ${activeClass}">
+                  <button type="button" class="page-link" data-page="${i}">${i}</button>
+                </li>
+              `);
+            }
+
+            // Next button
+            const nextDisabled = currentPage === totalPages ? 'disabled' : '';
+            $pagination.append(`
+              <li class="page-item ${nextDisabled}">
+                <button type="button" class="page-link" data-page="${currentPage + 1}" aria-label="Next">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </li>
+            `);
+          }
+
+          if (animateScroll) {
+            const $sec = $('#portfolio');
+            if ($sec.length) {
+              const targetTop = $sec.offset().top - 90;
+              $('html, body').animate({ scrollTop: targetTop }, 350);
+            }
+          }
+        }
+
+        // Filter tabs click handler
+        $('.ftab').on('click', function () {
+          currentFilter = String($(this).data('filter') || '').toLowerCase();
+          $('.ftab').removeClass('active');
+          $(this).addClass('active');
+          currentPage = 1;
+          updateDisplay(false);
+        });
+
+        // Pagination buttons click handler
+        $pagination.on('click', '.page-link', function (e) {
+          e.preventDefault();
+          const targetPage = parseInt($(this).data('page'), 10);
+          if (!isNaN(targetPage) && targetPage >= 1 && targetPage !== currentPage) {
+            currentPage = targetPage;
+            updateDisplay(true);
           }
         });
-      });
+
+        // Initial run
+        updateDisplay(false);
+
+      } else {
+        // Standard full filter for pages without pagination (e.g. /portfolio)
+        $('.ftab').on('click', function () {
+          const filter = String($(this).data('filter') || '').toLowerCase();
+          $('.ftab').removeClass('active');
+          $(this).addClass('active');
+
+          $('.pf-cat').each(function () {
+            const rawCat = String($(this).data('cat') || '').toLowerCase().trim();
+            const cats = rawCat.split(/\s+|,/);
+            if (filter === 'all' || cats.includes(filter) || rawCat === filter) {
+              $(this).stop().fadeIn(320);
+            } else {
+              $(this).stop().fadeOut(200);
+            }
+          });
+        });
+      }
     },
 
     /**

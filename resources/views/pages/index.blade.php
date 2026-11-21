@@ -200,8 +200,8 @@
          </div>
          <div class="row g-4" id="pfGrid">
             @foreach($projects as $p)
-            <div class="col-lg-{{ $loop->first ? '8' : '4' }} pf-cat aos-init aos-animate" data-cat="{{ $p->filter_categories }}" data-aos="fade-up">
-               <div class="pf-item" style="height:{{ $p->card_height ?? 300 }}px;" data-bs-toggle="modal" data-bs-target="#pfM{{ $p->id }}">
+            <div class="col-lg-4 col-md-6 pf-cat aos-init aos-animate" data-cat="{{ $p->filter_categories }}" data-aos="fade-up">
+               <div class="pf-item" style="height:320px;" data-bs-toggle="modal" data-bs-target="#pfM{{ $p->id }}">
                   <img class="pf-img" src="{{ asset($p->image ?? 'assets/images/portfolio/p1.jpg') }}" alt="{{ $p->title }}">
                   <div class="pf-ov">
                      <div>
@@ -213,6 +213,23 @@
                </div>
             </div>
             @endforeach
+         </div>
+
+         <!-- Portfolio Pagination & View All CTA -->
+         <div class="row mt-5 pt-2 align-items-center justify-content-between g-3" id="pfControls" data-aos="fade-up">
+            <div class="col-12 col-md-auto d-flex justify-content-center justify-content-md-start">
+               <nav aria-label="Portfolio pagination">
+                  <ul class="pagination portfolio-pagination mb-0" id="pfPagination">
+                     <!-- Dynamically generated via JS -->
+                  </ul>
+               </nav>
+            </div>
+            <div class="col-12 col-md-auto text-center text-md-end">
+               <a href="{{ route('portfolio') }}" class="btn-p d-inline-flex align-items-center gap-2" style="padding: 12px 28px; font-size: 0.95rem; font-weight: 600; border-radius: 50px;">
+                  <span>View All Projects</span>
+                  <i class="fas fa-arrow-right"></i>
+               </a>
+            </div>
          </div>
       </div>
    </section>

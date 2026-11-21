@@ -558,3 +558,54 @@ button.mfp-close:focus {
   color: #fff;
   transform: scale(1.08);
 }
+
+/* ==================== PORTFOLIO PAGINATION ==================== */
+.portfolio-pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.portfolio-pagination .page-item {
+  margin: 0;
+}
+.portfolio-pagination .page-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--text);
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border);
+  transition: all 0.25s ease;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.portfolio-pagination .page-item.active .page-link {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.38) !important;
+}
+.portfolio-pagination .page-link:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+.portfolio-pagination .page-item.disabled .page-link {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+  box-shadow: none;
+}
+
