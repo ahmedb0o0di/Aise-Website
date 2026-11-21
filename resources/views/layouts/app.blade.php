@@ -185,7 +185,7 @@
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">{{ $svc->title }}</h5>
-               <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+               <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body">
                <div class="mod-svc-ico"><i class="{{ $svc->icon }}"></i></div>
@@ -201,7 +201,7 @@
                @endif
                <div class="mt-4 pt-3 border-top d-flex justify-content-between align-items-center">
                   <a href="{{ route('contact') }}" class="btn-p">Book Consultation <i class="fas fa-arrow-right ms-1"></i></a>
-                  <button type="button" class="btn-o" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn-modal-close" data-bs-dismiss="modal"><i class="fas fa-times me-1"></i> Close</button>
                </div>
             </div>
          </div>
@@ -219,7 +219,7 @@
                   <div class="modal-cat">{{ $p->category->name ?? 'Project' }}</div>
                   <h5 class="modal-title">{{ $p->title }}</h5>
                </div>
-               <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+               <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body">
                <img src="{{ asset($p->image ?? 'assets/images/portfolio/p1.jpg') }}" alt="{{ $p->title }}" class="mod-proj-img">
@@ -246,7 +246,7 @@
                @endif
                <div class="mt-4 pt-3 border-top d-flex justify-content-between align-items-center">
                   <a href="{{ route('contact') }}" class="btn-p">Start Similar Project <i class="fas fa-arrow-right ms-1"></i></a>
-                  <button type="button" class="btn-o" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn-modal-close" data-bs-dismiss="modal"><i class="fas fa-times me-1"></i> Close</button>
                </div>
             </div>
          </div>
@@ -261,7 +261,7 @@
          <div class="modal-content">
             <div class="modal-header">
                <h5 class="modal-title">{{ $tm->name }}</h5>
-               <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+               <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body text-center">
                <img src="{{ asset($tm->image ?? 'assets/images/team/team-1.jpg') }}" alt="{{ $tm->name }}" style="width:130px;height:130px;border-radius:50%;object-fit:cover;margin:0 auto 16px;border:3px solid var(--primary)">
@@ -288,7 +288,7 @@
                   <div class="news-cat">{{ $art->category }}</div>
                   <h5 class="modal-title">{{ $art->title }}</h5>
                </div>
-               <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+               <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body">
                @if(!empty($art->image))
