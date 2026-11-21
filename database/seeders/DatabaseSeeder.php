@@ -91,7 +91,7 @@ class DatabaseSeeder extends Seeder
             ['number' => '40', 'suffix' => '+', 'label' => 'Awards Won', 'sort_order' => 4],
         ];
         foreach ($stats as $s) {
-            HeroStat::create($s);
+            HeroStat::firstOrCreate(['label' => $s['label']], $s);
         }
 
         // 4. Ticker Items
@@ -100,7 +100,7 @@ class DatabaseSeeder extends Seeder
             'Web Design', 'Content Creation', 'Performance Marketing', 'UI/UX Design'
         ];
         foreach ($tickers as $i => $text) {
-            TickerItem::create(['text' => $text, 'sort_order' => $i + 1]);
+            TickerItem::firstOrCreate(['text' => $text], ['sort_order' => $i + 1]);
         }
 
         // 5. Features
@@ -131,7 +131,7 @@ class DatabaseSeeder extends Seeder
             ],
         ];
         foreach ($features as $f) {
-            Feature::create($f);
+            Feature::firstOrCreate(['title' => $f['title']], $f);
         }
 
         // 6. Services (11 services)
