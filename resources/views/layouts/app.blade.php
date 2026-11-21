@@ -168,12 +168,6 @@
       <div class="container">
          <div class="ft-bottom">
             <div class="ft-copy">{{ $settings->footer_copyright ?? '© 2026 Astra Intelligence Services Egypt. All rights reserved.' }}</div>
-            <div class="ft-blinks">
-               <a href="{{ route('about') }}">About</a>
-               <a href="{{ route('services') }}">Services</a>
-               <a href="{{ route('portfolio') }}">Work</a>
-               <a href="{{ route('contact') }}">Contact</a>
-            </div>
          </div>
       </div>
    </footer>
