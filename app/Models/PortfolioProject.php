@@ -27,7 +27,7 @@ class PortfolioProject extends Model
             return 'branding web';
         }
 
-        if (in_array($this->slug, ['shakshak-tours-platform', 'ern-egypt-platform', 'tourlives-travel-platform', 'you2eu-platform'])) {
+        if (in_array($this->slug, ['shakshak-tours-platform', 'ern-egypt-platform', 'tourlives-travel-platform', 'you2eu-platform', 'robota-industries-platform'])) {
             return 'web';
         }
 
@@ -40,7 +40,7 @@ class PortfolioProject extends Model
             return 'Branding & Web Design';
         }
 
-        if (in_array($this->slug, ['shakshak-tours-platform', 'ern-egypt-platform', 'tourlives-travel-platform', 'you2eu-platform'])) {
+        if (in_array($this->slug, ['shakshak-tours-platform', 'ern-egypt-platform', 'tourlives-travel-platform', 'you2eu-platform', 'robota-industries-platform'])) {
             return 'Web Design & Development';
         }
 
