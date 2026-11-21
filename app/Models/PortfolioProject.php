@@ -23,7 +23,7 @@ class PortfolioProject extends Model
 
     public function getFilterCategoriesAttribute(): string
     {
-        if (in_array($this->slug, ['sc-dmc-global-travel-platform', 'top-marine-red-sea-platform'])) {
+        if (in_array($this->slug, ['sc-dmc-global-travel-platform', 'top-marine-red-sea-platform', 'catch-your-trip-platform'])) {
             return 'branding web';
         }
 
@@ -32,7 +32,7 @@ class PortfolioProject extends Model
 
     public function getCategoryDisplayNameAttribute(): string
     {
-        if (in_array($this->slug, ['sc-dmc-global-travel-platform', 'top-marine-red-sea-platform'])) {
+        if (in_array($this->slug, ['sc-dmc-global-travel-platform', 'top-marine-red-sea-platform', 'catch-your-trip-platform'])) {
             return 'Branding & Web Design';
         }
 
