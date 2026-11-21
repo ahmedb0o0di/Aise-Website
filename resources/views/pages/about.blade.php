@@ -100,6 +100,7 @@
    </section>
    @endif
 
+   @if(false)
    <!-- TEAM -->
    <section id="team" class="py-5">
       <div class="container">
@@ -129,4 +130,5 @@
          </div>
       </div>
    </section>
+   @endif
 @endsection
