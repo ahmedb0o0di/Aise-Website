@@ -211,51 +211,174 @@
    </div>
    @endforeach
 
-   <!-- PORTFOLIO MODALS -->
+   <!-- PORTFOLIO / CASE STUDY DETAIL MODALS -->
    @foreach($projects as $p)
-   <div class="modal fade" id="pfM{{ $p->id }}" tabindex="-1">
-      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-         <div class="modal-content overflow-hidden">
-            <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-            <div class="modal-header">
-               <div>
-                  <div class="modal-cat">{{ $p->category_display_name }}</div>
-                  <h5 class="modal-title">{{ $p->title }}</h5>
-               </div>
-            </div>
-            <div class="modal-body">
-               <img src="{{ asset($p->image ?? 'assets/images/portfolio/p1.jpg') }}" alt="{{ $p->title }}" class="mod-proj-img">
-               <div class="proj-meta-grid">
-                  <div class="pm-item"><div class="pm-lbl">Client</div><div class="pm-val">{{ $p->client ?? 'Confidential' }}</div></div>
-                  <div class="pm-item"><div class="pm-lbl">Year</div><div class="pm-val">{{ $p->year ?? '2026' }}</div></div>
-                  <div class="pm-item"><div class="pm-lbl">Services</div><div class="pm-val">{{ $p->services_provided ?? 'Digital Agency' }}</div></div>
-               </div>
-               @if(!empty($p->overview))
-                  <h6 style="font-weight:700;margin-bottom:8px">Project Overview</h6>
-                  <p style="color:var(--text2);margin-bottom:20px;line-height:1.78">{{ $p->overview }}</p>
-               @endif
-               @if(!empty($p->challenges))
-                  <h6 style="font-weight:700;margin-bottom:8px">The Challenge</h6>
-                  <p style="color:var(--text2);margin-bottom:20px;line-height:1.78">{{ $p->challenges }}</p>
-               @endif
-               @if(!empty($p->solution))
-                  <h6 style="font-weight:700;margin-bottom:8px">Our Solution</h6>
-                  <p style="color:var(--text2);margin-bottom:20px;line-height:1.78">{{ $p->solution }}</p>
-               @endif
-               @if(!empty($p->results))
-                  <h6 style="font-weight:700;margin-bottom:8px">Results & Impact</h6>
-                  <p style="color:var(--text2);margin-bottom:24px;line-height:1.78">{{ $p->results }}</p>
-               @endif
-               <div class="mt-4 pt-3 border-top d-flex flex-wrap justify-content-between align-items-center gap-3">
-                  <div class="d-flex align-items-center gap-2">
-                     <a href="{{ route('contact') }}" class="btn-p">Start Similar Project <i class="fas fa-arrow-right ms-1"></i></a>
+   <div class="modal fade pf-detail-modal" id="pfM{{ $p->id }}" tabindex="-1" aria-labelledby="pfMTitle{{ $p->id }}" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+         <div class="modal-content pf-modal-card">
+            
+            <!-- Close button -->
+            <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">
+               <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Modal Header -->
+            <div class="modal-header pf-modal-header border-0 pb-0">
+               <div class="w-100 pe-4">
+                  <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                     <span class="pf-pill-category">
+                        <i class="fas fa-layer-group me-1"></i> {{ $p->category_display_name }}
+                     </span>
+                     @if(!empty($p->year))
+                        <span class="pf-pill-year">
+                           <i class="fas fa-calendar-alt me-1"></i> {{ $p->year }}
+                        </span>
+                     @endif
                      @if(!empty($p->live_url))
-                        <a href="{{ $p->live_url }}" target="_blank" rel="noopener noreferrer" class="btn-o" style="padding: 10px 22px; border-radius: 50px; font-weight: 600; font-size: 0.92rem;"><i class="fas fa-external-link-alt me-1"></i> Visit Live Website</a>
+                        <span class="pf-pill-live">
+                           <span class="pf-pulse-dot"></span> Live Project
+                        </span>
                      @endif
                   </div>
-                  <button type="button" class="btn-modal-close" data-bs-dismiss="modal"><i class="fas fa-times me-1"></i> Close</button>
+                  <h3 class="modal-title pf-modal-heading" id="pfMTitle{{ $p->id }}">{{ $p->title }}</h3>
                </div>
             </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body pf-modal-body pt-3">
+
+               <!-- Hero Image Banner -->
+               <div class="pf-modal-hero mb-4 position-relative">
+                  <img src="{{ asset($p->image ?? 'assets/images/portfolio/p1.jpg') }}" alt="{{ $p->title }}" class="pf-modal-img">
+                  <div class="pf-modal-hero-overlay"></div>
+                  @if(!empty($p->client))
+                     <div class="pf-modal-client-badge">
+                        <span class="client-label">Client</span>
+                        <span class="client-name">{{ $p->client }}</span>
+                     </div>
+                  @endif
+               </div>
+
+               <!-- Meta Details Strip -->
+               <div class="pf-meta-strip mb-4">
+                  <div class="row g-3">
+                     <div class="col-md-4 col-sm-6">
+                        <div class="pf-meta-box">
+                           <div class="pf-meta-icon"><i class="fas fa-briefcase"></i></div>
+                           <div>
+                              <div class="pf-meta-lbl">Client Partner</div>
+                              <div class="pf-meta-val">{{ $p->client ?? 'Confidential' }}</div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-4 col-sm-6">
+                        <div class="pf-meta-box">
+                           <div class="pf-meta-icon"><i class="fas fa-calendar-check"></i></div>
+                           <div>
+                              <div class="pf-meta-lbl">Project Year</div>
+                              <div class="pf-meta-val">{{ $p->year ?? '2026' }}</div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-4 col-12">
+                        <div class="pf-meta-box">
+                           <div class="pf-meta-icon"><i class="fas fa-sliders-h"></i></div>
+                           <div>
+                              <div class="pf-meta-lbl">Core Discipline</div>
+                              <div class="pf-meta-val">{{ $p->category_display_name }}</div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  @if(!empty($p->services_provided))
+                  <div class="pf-services-box mt-3">
+                     <div class="pf-services-lbl"><i class="fas fa-tags me-1"></i> Deliverables & Scope</div>
+                     <div class="pf-services-tags">
+                        @foreach(array_filter(array_map('trim', explode(',', $p->services_provided))) as $svc)
+                           <span class="pf-svc-tag">{{ $svc }}</span>
+                        @endforeach
+                     </div>
+                  </div>
+                  @endif
+               </div>
+
+               <!-- Case Study Content (Bento Grid) -->
+               <div class="pf-story-grid">
+                  
+                  @if(!empty($p->overview))
+                  <!-- Overview Card -->
+                  <div class="pf-story-card pf-story-overview mb-3">
+                     <div class="pf-story-header">
+                        <div class="pf-story-icon icon-primary"><i class="fas fa-file-alt"></i></div>
+                        <h5 class="pf-story-title">Project Overview & Scope</h5>
+                     </div>
+                     <p class="pf-story-text">{{ $p->overview }}</p>
+                  </div>
+                  @endif
+
+                  <div class="row g-3 mb-3">
+                     @if(!empty($p->challenges))
+                     <div class="col-lg-6">
+                        <!-- Challenge Card -->
+                        <div class="pf-story-card pf-story-challenge h-100">
+                           <div class="pf-story-header">
+                              <div class="pf-story-icon icon-warning"><i class="fas fa-bullseye"></i></div>
+                              <h5 class="pf-story-title">The Challenge</h5>
+                           </div>
+                           <p class="pf-story-text">{{ $p->challenges }}</p>
+                        </div>
+                     </div>
+                     @endif
+
+                     @if(!empty($p->solution))
+                     <div class="col-lg-6">
+                        <!-- Solution Card -->
+                        <div class="pf-story-card pf-story-solution h-100">
+                           <div class="pf-story-header">
+                              <div class="pf-story-icon icon-info"><i class="fas fa-lightbulb"></i></div>
+                              <h5 class="pf-story-title">Our Solution</h5>
+                           </div>
+                           <p class="pf-story-text">{{ $p->solution }}</p>
+                        </div>
+                     </div>
+                     @endif
+                  </div>
+
+                  @if(!empty($p->results))
+                  <!-- Results Card -->
+                  <div class="pf-story-card pf-story-results">
+                     <div class="pf-story-header">
+                        <div class="pf-story-icon icon-success"><i class="fas fa-chart-line"></i></div>
+                        <h5 class="pf-story-title">Results & Key Impact</h5>
+                     </div>
+                     <p class="pf-story-text">{{ $p->results }}</p>
+                  </div>
+                  @endif
+
+               </div>
+
+            </div>
+
+            <!-- Modal Footer CTA -->
+            <div class="modal-footer pf-modal-footer">
+               <div class="d-flex flex-wrap align-items-center justify-content-between w-100 gap-3">
+                  <div class="d-flex flex-wrap align-items-center gap-2">
+                     <a href="{{ route('contact') }}" class="btn-p">
+                        <i class="fas fa-arrow-right me-1"></i> Start Similar Project
+                     </a>
+                     @if(!empty($p->live_url))
+                        <a href="{{ $p->live_url }}" target="_blank" rel="noopener noreferrer" class="btn-live-website">
+                           <i class="fas fa-external-link-alt me-1"></i> Visit Live Website
+                        </a>
+                     @endif
+                  </div>
+                  <button type="button" class="btn-modal-dismiss" data-bs-dismiss="modal">
+                     <i class="fas fa-times me-1"></i> Close
+                  </button>
+               </div>
+            </div>
+
          </div>
       </div>
    </div>
